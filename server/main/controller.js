@@ -11,7 +11,8 @@ module.exports = {
         var obj = {
             pathVar:{
                 moduleName: 'react'
-            }
+            },
+            timeout: 50000
         };
 
         list.getPoint1(obj).then(function(data){

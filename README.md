@@ -29,9 +29,12 @@ npm run watch
 
 
 For instance, one end point is [https://registry.npmjs.org/react](https://registry.npmjs.org/react).
+
 It is recommended to add the base restful Url in the environment variable, in this case, `https://registry.npmjs.org`
-This api method is GET, and looks like `/{moduleName} ` , when replace moduleName with `react `
-Follow the example in the controller so that you could easily create the bluebird promise and manage the endpoint very efficiently with less trouble on naming your endpoint.
+
+The api method here is GET, and looks like `/{moduleName} ` , when replace moduleName with `react `
+
+Follow the example in the controller so that you could easily create the bluebird promise and manage the endpoint very efficiently with less trouble in naming your endpoint.
 
 
 ## License

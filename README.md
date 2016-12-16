@@ -23,7 +23,7 @@ npm run watch
 ## Highlight
 
 - Request
-- BlurBird
+- BlueBird
 
 ## How Does It Work?
 

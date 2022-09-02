@@ -98,12 +98,12 @@ func main() {
 	}
 	err = os.RemoveAll(compressedFilePath)
 	if err != nil {
-          panic(err)
+		panic(err)
 	}
-        err = os.Mkdir(compressedFilePath, os.ModePerm)
-        if err != nil {
-	  panic(err)
-  	}
+	err = os.Mkdir(compressedFilePath, os.ModePerm)
+	if err != nil {
+		panic(err)
+	}
 
 	fmt.Println("Sent successfully.")
 }

@@ -4,7 +4,6 @@ import (
 	"compress/gzip"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"os"
 
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
@@ -23,6 +22,7 @@ var configuration Configurations
 const iconOssDestination string = "1/icons"
 const rawFilePath string = "./raw"
 const compressedFilePath string = "./compressed"
+const assetMaxAge = 31104000
 
 func loadConfiguration() {
 	viper.SetConfigName("oss-upload.env")
@@ -50,16 +50,18 @@ func main() {
 		panic(err)
 	}
 	for _, bucket := range lsRes.Buckets {
-		fmt.Println("Buckets:", bucket.Name)
+		fmt.Println("Bucket:", bucket.Name)
 	}
-	bucket, err := client.Bucket(configuration.BUCKET)
+	bucket, _ := client.Bucket(configuration.BUCKET)
+	cacheControlValue := fmt.Sprintf("public, max-age=%d", assetMaxAge)
+
 	options := []oss.Option{
 		oss.ContentType("image/svg+xml"),
 		oss.ContentEncoding("gzip"),
-		oss.CacheControl("public, max-age=31104000"),
+		oss.CacheControl(cacheControlValue),
 	}
 
-	files, err := ioutil.ReadDir(rawFilePath)
+	files, err := os.ReadDir(rawFilePath)
 	if err != nil {
 		panic(err)
 	}
